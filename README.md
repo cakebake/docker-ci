@@ -25,6 +25,12 @@ PHP 7.2
 -	openssh-client
 -	rsync
 
+### Docker Pull
+
+```bash
+docker pull cakebake/ci:php7.2
+```
+
 License
 -------
 

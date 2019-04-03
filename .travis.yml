@@ -7,5 +7,9 @@ env:
 
 script:
   - cd $IMAGE
-  - docker build -t docker-ci .
-  - docker run -it --rm -v $PWD:/_vol docker-ci /bin/bash -c '/_vol/test.sh'
+  - export TAG=ci:${IMAGE//[\/]/}
+  - docker build --pull --tag $TAG .
+  - docker run -it --rm -v $PWD:/_vol $TAG /bin/bash -c '/_vol/test.sh'
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - docker tag $TAG docker.io/cakebake/$TAG
+  - docker push docker.io/$DOCKER_USERNAME/$TAG
