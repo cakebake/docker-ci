@@ -65,8 +65,9 @@ RUN apt-get update \
 		/tmp/* \
 		/var/tmp/*
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-	&& export PATH=~/.composer/vendor/bin:$PATH
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+ENV PATH="/root/.composer/vendor/bin:${PATH}"
 
 RUN composer global require \
 		phpunit/phpunit
