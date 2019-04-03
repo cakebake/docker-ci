@@ -9,9 +9,9 @@ PHP 7.2
 -------
 
 -	PHP 7.2
-	-	with the ionCube PHP Loader (enabled)
-	-	with Zend OPcache
-	-	with Xdebug
+    -	with the ionCube PHP Loader (enabled)
+    -	with Zend OPcache
+    -	with Xdebug
 -	Composer
 -	Node.js
 -	NPM
