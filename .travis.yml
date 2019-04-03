@@ -5,11 +5,15 @@ sudo: required
 env:
   - IMAGE=php/7.2
 
-script:
+before_script:
   - cd $IMAGE
   - export TAG=ci:${IMAGE//[\/]/}
-  - docker build --pull --tag $TAG .
-  - docker run -it --rm -v $PWD:/_vol $TAG /bin/bash -c '/_vol/test.sh'
-  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - docker build --pull --tag $TAG . || exit 1
+
+script:
+  - docker run -it --rm -v $PWD:/_vol $TAG /bin/bash -c '/_vol/test.sh' || exit 1
+
+after_script:
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" || exit 1
   - docker tag $TAG docker.io/cakebake/$TAG
   - docker push docker.io/$DOCKER_USERNAME/$TAG
