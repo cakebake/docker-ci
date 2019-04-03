@@ -70,13 +70,16 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 ENV PATH="/root/.composer/vendor/bin:${PATH}"
 
 RUN composer global require \
-        phpunit/phpunit
+        phpunit/phpunit \
+    && composer clearcache
 
 RUN curl -SL http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz | tar xzv --directory /tmp --strip-components=1 \
     && mv /tmp/ioncube_loader_lin_7.2.so /usr/local/lib/php/extensions/no-debug-non-zts-20170718/ \
-    && echo "zend_extension=ioncube_loader_lin_7.2.so" > /usr/local/etc/php/conf.d/00-ioncube.ini
+    && echo "zend_extension=ioncube_loader_lin_7.2.so" > /usr/local/etc/php/conf.d/00-ioncube.ini \
+    && rm -fr /tmp/*
 
 RUN npm install -g \
         npm \
         less \
-        sass
+        sass \
+    && npm cache clean --force
