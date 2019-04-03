@@ -1,0 +1,11 @@
+language: bash
+services: docker
+sudo: required
+
+env:
+  - IMAGE=php/7.2
+
+script:
+  - cd $IMAGE
+  - docker build -t docker-ci .
+  - docker run -it --rm -v $PWD:/_vol docker-ci /bin/bash -c '/_vol/test.sh'
