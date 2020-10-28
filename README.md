@@ -27,7 +27,7 @@ With
 ### Docker Pull
 
 ```bash
-docker pull cakebake/ci:php7.2
+docker pull cakebake/ci:php7.4
 ```
 
 License
