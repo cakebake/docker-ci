@@ -5,25 +5,24 @@ docker-ci
 
 Docker images for CI.
 
-PHP 7.2
+PHP 7.4
 -------
 
--	PHP 7.2
-	-	with the ionCube PHP Loader (enabled)
-	-	with Zend OPcache
-	-	with Xdebug
--	Composer
--	Node.js
--	NPM
--	Less
--	Sass
--	wget
--	curl
--	mariadb-client
--	zip & unzip
--	git
--	openssh-client
--	rsync
+Based on `webdevops/php-apache-dev:7.4-alpine`: https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-apache-dev.html
+
+With
+
+- ioncube
+- composer
+- phpunit
+- node
+- npm
+- lessc
+- sass
+- ssh
+- wget
+- curl
+- mariadb-client
 
 ### Docker Pull
 

@@ -3,7 +3,7 @@ services: docker
 sudo: required
 
 env:
-  - IMAGE=php/7.2
+  - IMAGE=php/7.4
 
 before_script:
   - cd $IMAGE
